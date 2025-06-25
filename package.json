@@ -1,7 +1,7 @@
 {
 	"name": "@erlinemrys/eslint-config",
 	"type": "module",
-	"version": "0.0.2",
+	"version": "0.0.3",
 	"description": "Eslint configuration for all my npm projects",
 	"author": "Erlin Emrys",
 	"license": "MIT",
@@ -19,7 +19,7 @@
 	],
 	"main": "./dist/index.js",
 	"types": "./dist/index.d.ts",
-	"files": [ "dist", "LICENSE_THIRD_PARTIES.md" ],
+	"files": [ "LICENSE_THIRD_PARTIES.md", "dist" ],
 	"scripts":
 	{
 		"build": "tsc",
@@ -28,7 +28,6 @@
 	},
 	"peerDependencies":
 	{
-		"@antfu/eslint-config": "^4.16.1",
 		"eslint": "^9.29.0"
 	},
 	"dependencies":
