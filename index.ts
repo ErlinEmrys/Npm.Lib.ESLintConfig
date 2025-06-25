@@ -1,10 +1,10 @@
-// noinspection JSUnusedGlobalSymbols,SpellCheckingInspection
+// noinspection SpellCheckingInspection
 
 import type { Awaitable, ConfigNames, OptionsConfig, TypedFlatConfigItem } from "@antfu/eslint-config";
 import type { Linter } from "eslint";
 import type { FlatConfigComposer } from "eslint-flat-config-utils";
-import AntfuConfig from "@antfu/eslint-config";
 import type { RuleOptions } from "eslint-plugin-svelte/lib/rule-types";
+import AntfuConfig from "@antfu/eslint-config";
 
 export function ESLintConfig( options: OptionsConfig & Omit<TypedFlatConfigItem, "files"> = {},	...userConfigs: Awaitable<TypedFlatConfigItem | TypedFlatConfigItem[] | FlatConfigComposer<any, any> | Linter.Config[]>[] ): FlatConfigComposer<TypedFlatConfigItem, ConfigNames>
 {
@@ -21,6 +21,7 @@ export function ESLintConfig( options: OptionsConfig & Omit<TypedFlatConfigItem,
 			"style/keyword-spacing": [ "error", { after: false, before: true, overrides: { return: { after: true }, const: { after: true }, export: { after: true }, import: { after: true }, type: { after: true }, from: { after: true } } } ],
 			"style/member-delimiter-style": [ 2, { multiline: { delimiter: "semi", requireLast: true }, singleline: { delimiter: "semi", requireLast: false	}, multilineDetection: "brackets" } ],
 			"style/no-tabs": [ 0 ],
+			"style/operator-linebreak": [ 2, "after" ],
 			"style/padded-blocks": [ 2, { blocks: "never", classes: "never", switches: "never" } ],
 			"style/quotes": [ 2, "double" ],
 			"style/semi": [ 2, "always" ],
@@ -28,14 +29,14 @@ export function ESLintConfig( options: OptionsConfig & Omit<TypedFlatConfigItem,
 			"style/space-in-parens": [ 2, "always" ],
 			"style/spaced-comment": [ 2, "always" ],
 			"style/template-curly-spacing": [ 2, "always" ],
-			//"svelte/html-quotes": [ 2, { prefer: "double" } ],
-			//"svelte/indent": [ 2, {	indent: "tab", switchCase: 1, alignAttributesVertically: true } ],
-			//"svelte/mustache-spacing": [ 2, { textExpressions: "always", attributesAndProps: "always", directiveExpressions: "always", tags: { openingBrace: "always", closingBrace: "always" } } ],
+			"svelte/html-quotes": [ 2, { prefer: "double" } ],
+			"svelte/indent": [ 2, {	indent: "tab", switchCase: 1, alignAttributesVertically: true } ],
+			"svelte/mustache-spacing": [ 2, { textExpressions: "always", attributesAndProps: "always", directiveExpressions: "always", tags: { openingBrace: "always", closingBrace: "always" } } ],
 			"ts/prefer-literal-enum-member": [ 2, { allowBitwiseExpressions: true } ],
 			"unicorn/throw-new-error": [ 0 ],
 		};
 
-	const toIgnore = [ "node_modules", "**/node_modules/**", "dist", "dist/**", "package", "package/**", ".env", "**/.env/**", ".env.*", "**/.env.*/**", "!.env.example", "!**/.env.example/**", "pnpm-lock.yaml", "**/pnpm-lock.yaml/**", "package-lock.json", "**/package-lock.json/**", "yarn.lock", "**/yarn.lock/**" ];
+	const toIgnore = [ "node_modules", "**/node_modules/**", ".DS_Store", "**/.DS_Store/**", "dist", "dist/**", "pnpm-lock.yaml", "**/pnpm-lock.yaml/**", "package-lock.json", "**/package-lock.json/**", "yarn.lock", "**/yarn.lock/**" ];
 
 	options.ignores = ( options.ignores ?? [] ).concat( toIgnore );
 
@@ -43,7 +44,7 @@ export function ESLintConfig( options: OptionsConfig & Omit<TypedFlatConfigItem,
 
 	for( const [ fKey, fValue ] of Object.entries( rules ) )
 	{
-		if( !options.rules.hasOwnProperty( fKey ) )
+		if( !Object.prototype.hasOwnProperty.call( options.rules, fKey ) && ( options.svelte || !fKey.startsWith( "svelte/" ) ) )
 		{
 			options.rules[ fKey ] = fValue;
 		}
