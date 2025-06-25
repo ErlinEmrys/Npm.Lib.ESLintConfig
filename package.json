@@ -1,0 +1,39 @@
+{
+	"name": "@erlinemrys/eslint-config",
+	"version": "0.0.1",
+	"description": "Eslint configuration for all my npm projects",
+	"type": "module",
+	"author": "Erlin Emrys",
+	"license": "MIT",
+	"repository":
+	{
+		"type": "git",
+		"url": "https://github.com/ErlinEmrys/Npm.Lib.EslintConfig.git"
+	},
+	"main": "./dist/index.js",
+	"types": "./dist/index.d.ts",
+	"files": [ "dist" ],
+	"keywords":
+	[
+		"eslint",
+		"eslintconfig",
+		"linting",
+		"javascript"
+	],
+	"peerDependencies":
+	{
+		"@antfu/eslint-config": "^4.15.0",
+		"eslint": "^9.29.0"
+	},
+	"devDependencies":
+	{
+		"@antfu/eslint-config": "^4.15.0",
+		"eslint": "9.29.0",
+		"eslint-flat-config-utils": "2.1.0",
+		"eslint-plugin-svelte": "2.46.1"
+	},
+	"scripts":
+	{
+		"lint": "eslint ."
+	}
+}
