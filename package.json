@@ -30,7 +30,8 @@
 		"@antfu/eslint-config": "^4.15.0",
 		"eslint": "9.29.0",
 		"eslint-flat-config-utils": "2.1.0",
-		"eslint-plugin-svelte": "2.46.1"
+		"eslint-plugin-svelte": "2.46.1",
+		"jiti": "2.4.2"
 	},
 	"scripts":
 	{
