@@ -1,7 +1,7 @@
 {
 	"name": "@erlinemrys/eslint-config",
 	"type": "module",
-	"version": "0.0.1",
+	"version": "0.0.2",
 	"description": "Eslint configuration for all my npm projects",
 	"author": "Erlin Emrys",
 	"license": "MIT",
@@ -19,7 +19,7 @@
 	],
 	"main": "./dist/index.js",
 	"types": "./dist/index.d.ts",
-	"files": [ "dist", "README.md" ],
+	"files": [ "dist", "LICENSE_THIRD_PARTIES.md" ],
 	"scripts":
 	{
 		"build": "tsc",
