@@ -1,4 +1,4 @@
-// noinspection SpellCheckingInspection
+// noinspection JSUnusedGlobalSymbols,SpellCheckingInspection
 
 import type { Awaitable, ConfigNames, OptionsConfig, TypedFlatConfigItem } from "@antfu/eslint-config";
 import type { Linter } from "eslint";
@@ -55,3 +55,5 @@ export function ESLintConfig( options: OptionsConfig & Omit<TypedFlatConfigItem,
 
 	return AntfuConfig( options, ...userConfigs );
 }
+
+export default ESLintConfig;
