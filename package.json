@@ -19,10 +19,10 @@
 	],
 	"main": "./dist/index.js",
 	"types": "./dist/index.d.ts",
-	"files": [ "LICENSE_THIRD_PARTIES.md", "dist" ],
+	"files": [ "dist" ],
 	"scripts":
 	{
-		"build": "tsc",
+		"build": "rimraf dist && tsc",
 		"lint": "eslint .",
 		"format": "eslint . --fix"
 	},
@@ -39,6 +39,7 @@
 		"eslint": "9.29.0",
 		"eslint-flat-config-utils": "2.1.0",
 		"eslint-plugin-svelte": "3.9.3",
-		"jiti": "2.4.2"
+		"jiti": "2.4.2",
+		"rimraf": "6.0.1"
 	}
 }
