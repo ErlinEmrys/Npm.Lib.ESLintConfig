@@ -33,11 +33,7 @@
 		"build": "rimraf dist && tsc",
 		"lint": "eslint .",
 		"format": "eslint . --fix",
-		"pub": "pnpm lint && pnpm build && pnpm publish"
-	},
-	"publishConfig":
-	{
-		"access": "public"
+		"pub": "pnpm lint && pnpm build && pnpm publish --access public"
 	},
 	"peerDependencies":
 	{
