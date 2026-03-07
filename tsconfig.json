@@ -5,10 +5,10 @@
 		"module": "ESNext",
 		"moduleResolution": "Bundler",
 		"strict": true,
-		"outDir": "dist",
 		"declaration": true,
 		"emitDeclarationOnly": false,
-		"skipLibCheck": true,
+		"outDir": "dist",
+		"skipLibCheck": true
 	},
 	"include": [ "**/*.ts" ]
 }
