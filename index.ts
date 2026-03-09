@@ -5,12 +5,14 @@ import type { Linter } from "eslint";
 import type { FlatConfigComposer } from "eslint-flat-config-utils";
 import type { RuleOptions } from "eslint-plugin-svelte/lib/rule-types";
 import AntfuConfig from "@antfu/eslint-config";
+import genericTypeParameterSpacing from "./Rules/GenericTypeParamSpacing";
 
 export function ESLintConfig( options: OptionsConfig & Omit< TypedFlatConfigItem, "files" > = {},	...userConfigs: Awaitable< TypedFlatConfigItem | TypedFlatConfigItem[] | FlatConfigComposer< any, any > | Linter.Config[] >[] ): FlatConfigComposer< TypedFlatConfigItem, ConfigNames >
 {
 	const rules: Partial< Linter.RulesRecord & RuleOptions > =
 		{
 			"curly": [ 2, "all" ],
+			"erlinemrys/generic-type-parameter-spacing": [ 2 ],
 			"no-console": [ 2, {} ],
 			"jsonc/array-bracket-spacing": [ 2, "always" ],
 			"jsonc/indent": [ 2, "tab" ],
@@ -41,6 +43,11 @@ export function ESLintConfig( options: OptionsConfig & Omit< TypedFlatConfigItem
 	const toIgnore = [ "node_modules", "**/node_modules/**", ".DS_Store", "**/.DS_Store/**", "dist", "dist/**", "pnpm-lock.yaml", "**/pnpm-lock.yaml/**", "package-lock.json", "**/package-lock.json/**", "yarn.lock", "**/yarn.lock/**" ];
 
 	options.ignores = ( options.ignores ?? [] ).concat( toIgnore );
+
+	options.plugins ??= {};
+	options.plugins.erlinemrys ??= { rules: {} };
+	options.plugins.erlinemrys.rules ??= {};
+	options.plugins.erlinemrys.rules[ "generic-type-parameter-spacing" ] ??= genericTypeParameterSpacing;
 
 	options.rules ??= {};
 
