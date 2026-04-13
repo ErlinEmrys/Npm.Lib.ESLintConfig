@@ -5,7 +5,7 @@ import type { Linter } from "eslint";
 import type { FlatConfigComposer } from "eslint-flat-config-utils";
 import type { RuleOptions } from "eslint-plugin-svelte/lib/rule-types";
 import AntfuConfig from "@antfu/eslint-config";
-import genericTypeParameterSpacing from "./Rules/GenericTypeParamSpacing";
+import genericTypeParameterSpacing from "./Rules/GenericTypeParamSpacing.js";
 
 export function ESLintConfig( options: OptionsConfig & Omit< TypedFlatConfigItem, "files" > = {},	...userConfigs: Awaitable< TypedFlatConfigItem | TypedFlatConfigItem[] | FlatConfigComposer< any, any > | Linter.Config[] >[] ): FlatConfigComposer< TypedFlatConfigItem, ConfigNames >
 {

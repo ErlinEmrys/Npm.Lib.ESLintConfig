@@ -1,3 +1,3 @@
-import { ESLintConfig } from "./index";
+import { ESLintConfig } from "./index.js";
 
 export default ESLintConfig();
